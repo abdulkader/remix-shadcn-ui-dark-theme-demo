@@ -48,8 +48,35 @@ export const meta: V2_MetaFunction = () => {
       content: 'Remix shadcn/ui Dark theme Demo App',
     },
     {
+      property: 'og:image',
+      content: '/assets/preview-dark.png',
+    },
+    {
       name: 'description',
+      content:
+        'Remix shadcn/ui Dark theme Demo App to showcase the Dark theme toggle feature and reference for documentation',
+    },
+    {
+      name: 'og:description',
+      content:
+        'Remix shadcn/ui Dark theme Demo App to showcase the Dark theme toggle feature and reference for documentation',
+    },
+    {
+      name: 'og:url',
+      content: 'https://remix-shadcn-ui-dark-theme-demo.vercel.app/',
+    },
+
+    {
+      property: 'twitter:title',
       content: 'Remix shadcn/ui Dark theme Demo App',
+    },
+    {
+      property: 'twitter:image',
+      content: '/assets/preview-dark.png',
+    },
+    {
+      property: 'twitter:card',
+      content: '/assets/preview-dark.png',
     },
   ];
 };
