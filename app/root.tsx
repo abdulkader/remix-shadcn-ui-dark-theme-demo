@@ -3,6 +3,7 @@ import type {
   LoaderArgs,
   LinksFunction,
   ActionFunction,
+  LoaderFunction,
   ActionArgs,
   V2_MetaFunction,
 } from '@remix-run/node';
@@ -24,18 +25,17 @@ import { ThemeProvider } from '~/components/theme-provider';
 import { Header } from '~/components/header';
 import { Analytics } from '@vercel/analytics/react';
 
-
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: globalStyles },
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
 ];
 
-export async function loader({ request }: LoaderArgs) {
+export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
   const theme = await getThemeFromCookie(request);
   return json({
     theme,
   });
-}
+};
 
 export const action: ActionFunction = async ({ request }: ActionArgs) => {
   const { theme = 'system' } = await request.json();

@@ -1,4 +1,6 @@
+import { Github } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
+import { Button } from '@/components/ui/button';
 import {
   Menubar,
   MenubarCheckboxItem,
@@ -109,7 +111,20 @@ export const Header = () => {
           </MenubarMenu>
         </Menubar>
       </div>
-      <div>
+      <div className="inline-flex justify-center items-center align-middle">
+        <Button
+          variant="outline"
+          size="icon"
+          className="w-auto px-2 mx-2"
+          asChild>
+          <a
+            className="inline-flex align-middle items-center text-sm"
+            href="https://github.com/abdulkader/remix-shadcn-ui-dark-theme-demo"
+            target="__blank">
+            <Github />
+            <span className="px-2 inline-flex">View in Github</span>
+          </a>
+        </Button>
         <ThemeToggle />
       </div>
     </header>
