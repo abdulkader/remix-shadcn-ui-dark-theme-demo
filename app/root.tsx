@@ -49,7 +49,8 @@ export const meta: V2_MetaFunction = () => {
     },
     {
       property: 'og:image',
-      content: '/assets/preview-dark.png',
+      content:
+        'https://remix-shadcn-ui-dark-theme-demo.vercel.app/assets/preview-dark.png',
     },
     {
       name: 'description',
@@ -72,11 +73,13 @@ export const meta: V2_MetaFunction = () => {
     },
     {
       property: 'twitter:image',
-      content: '/assets/preview-dark.png',
+      content:
+        'https://remix-shadcn-ui-dark-theme-demo.vercel.app/assets/preview-dark.png',
     },
     {
       property: 'twitter:card',
-      content: '/assets/preview-dark.png',
+      content:
+        'https://remix-shadcn-ui-dark-theme-demo.vercel.app/assets/preview-dark.png',
     },
   ];
 };
