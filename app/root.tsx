@@ -22,6 +22,8 @@ import globalStyles from '~/styles/global.css';
 import { createThemeCookie, getThemeFromCookie } from '~/lib/theme.server';
 import { ThemeProvider } from '~/components/theme-provider';
 import { Header } from '~/components/header';
+import { Analytics } from '@vercel/analytics/react';
+
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: globalStyles },
@@ -99,6 +101,7 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+        <Analytics />
         <ThemeProvider defaultTheme={theme} onThemeChange={onThemeChange}>
           <Header />
           <Outlet />
