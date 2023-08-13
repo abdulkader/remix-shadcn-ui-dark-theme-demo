@@ -88,12 +88,12 @@ export default function App() {
       {
         method: 'post',
         encType: 'application/json',
-        action: '/api/themeToggle',
+        action: '/api/toggleTheme',
       },
     );
   };
   return (
-    <html lang="en" className={theme}>
+    <html lang="en" className={theme ?? 'theme'}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
