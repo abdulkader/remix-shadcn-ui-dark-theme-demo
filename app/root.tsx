@@ -2,9 +2,7 @@ import { cssBundleHref } from '@remix-run/css-bundle';
 import type {
   LoaderArgs,
   LinksFunction,
-  ActionFunction,
   LoaderFunction,
-  ActionArgs,
   V2_MetaFunction,
 } from '@remix-run/node';
 import { json } from '@remix-run/node';
@@ -16,11 +14,11 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
-  useSubmit,
+  useFetcher,
 } from '@remix-run/react';
 
 import globalStyles from '~/styles/global.css';
-import { createThemeCookie, getThemeFromCookie } from '~/lib/theme.server';
+import { getThemeFromCookie } from '~/lib/theme.server';
 import { ThemeProvider } from '~/components/theme-provider';
 import { Header } from '~/components/header';
 import { Analytics } from '@vercel/analytics/react';
@@ -35,11 +33,6 @@ export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
   return json({
     theme,
   });
-};
-
-export const action: ActionFunction = async ({ request }: ActionArgs) => {
-  const { theme = 'system' } = await request.json();
-  return createThemeCookie(request, theme);
 };
 
 export const meta: V2_MetaFunction = () => {
@@ -88,9 +81,16 @@ export const meta: V2_MetaFunction = () => {
 
 export default function App() {
   const { theme = 'system' } = useLoaderData<typeof loader>();
-  const submit = useSubmit();
+  const fetcher = useFetcher();
   const onThemeChange = (theme: string) => {
-    submit({ theme }, { method: 'post', encType: 'application/json' });
+    fetcher.submit(
+      { theme },
+      {
+        method: 'post',
+        encType: 'application/json',
+        action: '/api/themeToggle',
+      },
+    );
   };
   return (
     <html lang="en" className={theme}>
